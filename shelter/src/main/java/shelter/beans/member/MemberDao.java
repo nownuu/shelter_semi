@@ -151,7 +151,7 @@ public class MemberDao {
 
     
     // 정보 수정
-    public void editMember(MemberDto member) {
+    public boolean updateMemberById(MemberDto member) {
         String sql = "UPDATE member SET member_pw=?, member_phone=?, member_email=?, member_gender=?, member_address=? WHERE member_id=?";
 
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -164,21 +164,36 @@ public class MemberDao {
 
             int rowsAffected = ps.executeUpdate();
 
-            if (rowsAffected > 0) {
-                System.out.println("Member information updated successfully");
-            } else {
-                System.out.println("No member found with the specified ID");
-            }
+            return rowsAffected > 0;
 
         } catch (SQLException ex) {
             ex.printStackTrace();
+            return false;
         } finally {
             JdbcUtil.close(this.conn, null, null);
         }
     }
 
+
     
     //  회원 탈퇴
-    
+    public boolean quitMemberById(String memberId) {
+        String sql = "DELETE FROM member WHERE member_id=?";
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, memberId);
+
+            int rowsAffected = ps.executeUpdate();
+
+            return rowsAffected > 0;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        } finally {
+            JdbcUtil.close(this.conn, null, null);
+        }
+    }
+
     
 }
