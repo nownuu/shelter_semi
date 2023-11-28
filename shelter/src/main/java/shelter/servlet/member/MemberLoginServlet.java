@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import shelter.beans.member.MemberDao;
 import shelter.beans.member.MemberDto;
 
-@WebServlet("/")
+@WebServlet("/test/login.do")
 public class MemberLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
