@@ -17,22 +17,40 @@ CREATE TABLE `member` (
 public class MemberDto {
     private String memberId;
     private String memberPw;
+    private String memberName;
+    private String memberNickname;
     private String memberPhone;
     private String memberEmail;
     private String memberGender;
     private String memberAddress;
     private Timestamp memberJoin; // 회원 가입일 - 자동 등록
     private String memberGrade;
+
     
-   
 	@Override
 	public String toString() {
-		return "MemberDto [memberId=" + memberId + ", memberPw=" + memberPw + ", memberPhone=" + memberPhone
-				+ ", memberEmail=" + memberEmail + ", memberGender=" + memberGender + ", memberAddress=" + memberAddress
-				+ ", memberJoin=" + memberJoin + ", memberGrade=" + memberGrade + "]";
+		return "MemberDto [memberId=" + memberId + ", memberPw=" + memberPw + ", memberName=" + memberName
+				+ ", memberNickname=" + memberNickname + ", memberPhone=" + memberPhone + ", memberEmail=" + memberEmail
+				+ ", memberGender=" + memberGender + ", memberAddress=" + memberAddress + ", memberJoin=" + memberJoin
+				+ ", memberGrade=" + memberGrade + "]";
 	}
 	
-	
+	public String getMemberName() {
+		return memberName;
+	}
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+	public String getMemberNickname() {
+		return memberNickname;
+	}
+
+
+	public void setMemberNickname(String memberNickname) {
+		this.memberNickname = memberNickname;
+	}
+
+
 	public String getMemberId() {
 		return memberId;
 	}
