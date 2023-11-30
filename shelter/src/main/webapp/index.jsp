@@ -20,6 +20,7 @@
 %>
     <div>
         <a href="test/mypage.jsp">마이페이지</a>
+        <a href="test/memberInfo.do">마이페이지-본인 정보 보기</a>
         <p><%= uid %>님, 환영합니다!</p>
         <a href="logout.do">로그아웃</a>
     </div>
