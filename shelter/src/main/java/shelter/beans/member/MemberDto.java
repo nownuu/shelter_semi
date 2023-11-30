@@ -6,12 +6,14 @@ import java.sql.Timestamp;
 CREATE TABLE `member` (
     `member_id` varchar(128) primary key,
     `member_pw` varchar(128) not null,
+    `member_name` varchar(64) not null,
+    `member_nickname` varchar(64) not null,
     `member_phone` char(11) not null,
     `member_email` varchar(128) not null,
     `member_gender` varchar(2) not NULL CHECK (`member_gender` IN ('남', '녀')),
     `member_address` varchar(256) not null,
     `member_join` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `member_grade` varchar(16) not null DEFAULT '일반회원' CHECK (`member_grade` IN ('일반회원', '보호소', '관리자'))
+    `member_grade` varchar(16) DEFAULT '일반회원' CHECK (`member_grade` IN ('일반회원', '보호소', '관리자'))
 );
  * */
 public class MemberDto {

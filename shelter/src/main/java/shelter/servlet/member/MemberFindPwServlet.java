@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import shelter.beans.member.MemberDao;
+import shelter.beans.member.MemberDto;
 
 @WebServlet("/test/findPw.do")
 public class MemberFindPwServlet extends HttpServlet {
@@ -27,15 +28,15 @@ public class MemberFindPwServlet extends HttpServlet {
 
             String memberId = req.getParameter("memberId");
             String memberName = req.getParameter("memberName");
-            String memberPhone = req.getParameter("memberPhone");
+            String memberEmail = req.getParameter("memberEmail");
 
             // 처리
             MemberDao memberDao = new MemberDao();
-            String newPassword = memberDao.findPw(memberId, memberName, memberPhone);
+            MemberDto member = memberDao.getMemberById(memberId);
 
-            if (newPassword != null) {
+            if (member != null && memberEmail.equals(member.getMemberEmail())) {
                 // 이메일로 임시 비밀번호 발송
-                sendPassword(memberId, newPassword);
+                sendPassword(member.getMemberEmail(), memberId, memberDao);
 
                 // 비밀번호 찾기 결과 페이지로 이동
                 resp.sendRedirect("findPw_result.jsp?result=success");
@@ -50,14 +51,11 @@ public class MemberFindPwServlet extends HttpServlet {
     }
 
     // 이메일로 임시 비밀번호 발송
-    private void sendPassword(String memberId, String newPassword) throws MessagingException {
+    private void sendPassword(String toAddress, String memberId, MemberDao memberDao) throws MessagingException {
         // 구글 계정 정보
         String host = "smtp.gmail.com";
         String username = "수정"; // 발송자 Gmail 계정
         String password = "수정"; // Gmail 비밀번호
-
-        // 수신자 이메일 주소
-        String toAddress = "nownuu98@gmail.com"; // 수신자 이메일 주소
 
         // 메일 속성 설정
         Properties properties = new Properties();
@@ -66,7 +64,6 @@ public class MemberFindPwServlet extends HttpServlet {
         properties.put("mail.smtp.host", host);
         properties.put("mail.smtp.port", "587");
         properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
-        
 
         // 세션 생성
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
@@ -81,10 +78,16 @@ public class MemberFindPwServlet extends HttpServlet {
         message.setRecipient(Message.RecipientType.TO, new InternetAddress(toAddress));
         message.setSubject("임시 비밀번호 발송");
         message.setText("안녕하세요, " + memberId + "님!\n\n"
-                + "임시 비밀번호는 " + newPassword + " 입니다.\n"
+                + "임시 비밀번호는 " + generateTemporaryPassword() + " 입니다.\n"
                 + "로그인 후에는 비밀번호를 변경해 주세요.");
 
         // 메일 전송
         Transport.send(message);
+    }
+
+    // 임시 비밀번호 생성 
+    private String generateTemporaryPassword() {
+        
+        return "tempPassword123"; // 수정 필요...
     }
 }

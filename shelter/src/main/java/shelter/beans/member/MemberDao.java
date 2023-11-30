@@ -45,9 +45,9 @@ public class MemberDao {
 		}
     }
     
-    // 로그인
+ // 로그인
     public MemberDto login(String memberId, String memberPw) {
-        String sql = "SELECT member_id, member_grade FROM member WHERE member_id=? AND member_pw=?";
+        String sql = "SELECT * FROM member WHERE member_id=? AND member_pw=?";
 
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, memberId);
@@ -58,8 +58,14 @@ public class MemberDao {
                     MemberDto memberDto = new MemberDto();
                     
                     memberDto.setMemberId(rs.getString("member_id"));
-                    memberDto.setMemberGrade(rs.getString("member_grade"));
-                    
+                    memberDto.setMemberPw(rs.getString("member_pw"));
+                    memberDto.setMemberName(rs.getString("member_name"));
+                    memberDto.setMemberNickname(rs.getString("member_Nickname"));
+                    memberDto.setMemberPhone(rs.getString("member_phone"));
+                    memberDto.setMemberEmail(rs.getString("member_email"));
+                    memberDto.setMemberGender(rs.getString("member_gender"));
+                    memberDto.setMemberAddress(rs.getString("member_address"));
+
                     return memberDto;
                 }
             }
@@ -73,6 +79,7 @@ public class MemberDao {
         // error
         return null;
     }
+
 
     // 아이디 찾기
     public String findId(String memberName, String memberPhone) {
@@ -97,15 +104,15 @@ public class MemberDao {
         return null;
     }
 
-    // 비밀번호 찾기
-    public String findPw(String memberId, String memberName, String memberPhone) {
-    	String sql = "SELECT member_pw FROM member WHERE member_id=? AND member_name=? AND member_phone=?";
+    // 비밀번호 찾기 - 임시 비밀번호를 이메일로 줄 예정
+    public String findPw(String memberId, String memberName, String memberEmail) {
+    	String sql = "SELECT member_pw FROM member WHERE member_id=? AND member_name=? AND member_email=?";
     	
     	try(PreparedStatement ps = conn.prepareStatement(sql)){
     		
     		ps.setString(1, memberId);
     		ps.setString(2, memberName);
-            ps.setString(3, memberPhone);
+            ps.setString(3, memberEmail);
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
