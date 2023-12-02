@@ -27,7 +27,7 @@ public class MemberLoginServlet extends HttpServlet {
 			MemberDto memberDto = memberDao.login(memberId, memberPw);
 			
 			// 콘솔 확인용
-			System.out.println(memberDto);
+			System.out.println("로그인 확인 : "+memberDto);
 			
 			// 세션 저장
 			if(memberDto != null) {
