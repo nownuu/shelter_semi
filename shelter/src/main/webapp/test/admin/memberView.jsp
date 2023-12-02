@@ -38,7 +38,7 @@
                 <td>
                     <a href="<%= request.getContextPath() %>/test/admin/editMember.jsp?memberId=${member.memberId}">Edit</a>
                     |
-                    <a href="<%= request.getContextPath() %>/test/admin/deleteMember.jsp?memberId=${member.memberId}">Delete</a>
+                    <a href="<%= request.getContextPath() %>/test/admin/deleteMember.do?memberId=${member.memberId}">Delete</a>
                 </td>
             </tr>
         </c:forEach>

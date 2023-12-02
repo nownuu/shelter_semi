@@ -58,16 +58,13 @@ public class AdminDao extends MemberDao {
 
     // 회원 정보 수정
     public boolean updateMember(MemberDto member) {
-        String sql = "UPDATE member SET member_pw=?, member_nickname=?, member_phone=?, member_email=?, member_gender=?, member_address=? WHERE member_id=?";
+        String sql = "UPDATE member SET member_nickname=?, member_gender=?, member_grade=? WHERE member_id=?";
 
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, member.getMemberPw());
-            ps.setString(2, member.getMemberNickname());
-            ps.setString(3, member.getMemberPhone());
-            ps.setString(4, member.getMemberEmail());
-            ps.setString(5, member.getMemberGender());
-            ps.setString(6, member.getMemberAddress());
-            ps.setString(7, member.getMemberId());
+            ps.setString(1, member.getMemberNickname());
+            ps.setString(2, member.getMemberGender());
+            ps.setString(3, member.getMemberGrade());
+            ps.setString(4, member.getMemberId());
 
             int rowsAffected = ps.executeUpdate();
 
