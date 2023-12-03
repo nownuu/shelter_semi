@@ -1,11 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="css/index.css" />
     <title>사지마세요, 입양하세요.</title>
   </head>
   <body>
@@ -19,21 +17,9 @@ pageEncoding="UTF-8"%>
         <li><a href="#">유기동물 입양</a></li>
         <li><a href="#">자원봉사 모집</a></li>
         <li>
-          <% String uid = (String) session.getAttribute("uid"); String
-          memberGrade = (String) session.getAttribute("grade"); if (uid == null
-          || uid.isEmpty()) { %>
-          <a href="test/login.jsp"
+          <a href="#"
             ><img src="img/btn-login.png" alt="로그인/마이페이지"
           /></a>
-          <% } else { %>
-          <a href="test/mypage.jsp"
-            ><%= uid %>님, 환영합니다!<img
-              src="img/btn-login.png"
-              alt="로그인/마이페이지"
-          /></a>
-          <% if ("관리자".equals(memberGrade)) { %>
-          <a href="test/admin/memberView.do">회원 전체 정보 보기</a>
-          <% } %> <% } %>
         </li>
       </ul>
     </header>
