@@ -65,6 +65,8 @@ public class MemberDao {
                     memberDto.setMemberEmail(rs.getString("member_email"));
                     memberDto.setMemberGender(rs.getString("member_gender"));
                     memberDto.setMemberAddress(rs.getString("member_address"));
+                    memberDto.setMemberJoin(rs.getTimestamp("member_join"));
+                    memberDto.setMemberGrade(rs.getString("member_grade"));
 
                     return memberDto;
                 }
@@ -148,6 +150,8 @@ public class MemberDao {
                     memberDto.setMemberEmail(rs.getString("member_email"));
                     memberDto.setMemberGender(rs.getString("member_gender"));
                     memberDto.setMemberAddress(rs.getString("member_address"));
+                    memberDto.setMemberJoin(rs.getTimestamp("member_join"));
+                    memberDto.setMemberGrade(rs.getString("member_grade"));
 
                     return memberDto;
                 }

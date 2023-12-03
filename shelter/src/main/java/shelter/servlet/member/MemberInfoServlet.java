@@ -19,14 +19,14 @@ public class MemberInfoServlet extends HttpServlet {
             String memberId = (String) req.getSession().getAttribute("uid");
             
             // 콘솔 확인용
-            System.out.println("Member ID from session: " + memberId);
+//            System.out.println("회원 정보 보기: " + memberId);
 
             if (memberId != null) {
                 MemberDao memberDao = new MemberDao();
                 MemberDto memberDto = memberDao.getMemberById(memberId);
                 
                 // 콘솔 확인용
-                System.out.println("인포 서블릿"+memberDto);
+//                System.out.println("인포 서블릿"+memberDto);
                 
                 req.setAttribute("memberDto", memberDto);
                 req.getRequestDispatcher("/test/memberInfo.jsp").forward(req, resp);
