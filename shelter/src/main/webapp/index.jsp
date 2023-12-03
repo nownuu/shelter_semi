@@ -14,7 +14,7 @@ pageEncoding="UTF-8"%>
         <a href="#"><img src="img/Logo.png" alt="로고" /></a>
       </h1>
       <ul class="menu-area">
-        <li><a href="#">실종동물 찾기</a></li>
+        <li><a href="#">실종동물</a></li>
         <li><a href="#">유기동물 보호</a></li>
         <li><a href="#">유기동물 입양</a></li>
         <li><a href="#">자원봉사 모집</a></li>
