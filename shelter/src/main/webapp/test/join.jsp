@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/join.css" />
+    <link rel="stylesheet" href="/css/join.css" />
     <title>회원가입</title>
   </head>
   <body>
