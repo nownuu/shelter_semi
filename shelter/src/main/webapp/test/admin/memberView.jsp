@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix ="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Member View</title>
-</head>
-<body>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/index.css" />
+     <link rel="stylesheet" href="../../css/table.css" />
+    <title>관리자 페이지 - 회원 정보</title>
+  </head>
+  <body>
+   <jsp:include page="adminHeader.jsp" />
+    <main>
 
 <h2>Member List</h2>
 
@@ -44,6 +49,6 @@
         </c:forEach>
     </tbody>
 </table>
-
+</main>
 </body>
 </html>

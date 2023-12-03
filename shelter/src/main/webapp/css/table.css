@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+main {
+  text-align: center;
+}
+main h2 {
+  font-size: 52px;
+  font-weight: bolder;
+  margin-bottom: 30px;
+}
+table {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 5px 10px;
+  border: 1px solid #333;
+}
+table th,
+td {
+  border: 1px solid #333;
+  padding: 5px;
+}
+table th {
+  font-size: 18px;
+  font-weight: bold;
+}
+table tr:hover {
+  background-color: #eee;
+}
+table td a{
+	color: blue;
+}

@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/join.css" />
     <title>비밀번호 찾기 결과</title>
-</head>
-<body>
+  </head>
+  <body>
+    <h1>
+      <a href="../index.jsp"><img src="../img/Logo.png" alt="로고" /></a>
+    </h1>
 
 <% String result = request.getParameter("result"); %>
 <% if ("success".equals(result)) { %>
