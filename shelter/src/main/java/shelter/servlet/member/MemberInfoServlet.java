@@ -19,7 +19,7 @@ public class MemberInfoServlet extends HttpServlet {
             String memberId = (String) req.getSession().getAttribute("uid");
             
             // 콘솔 확인용
-//            System.out.println("회원 정보 보기: " + memberId);
+            System.out.println("회원 정보 보기: " + memberId);
 
             if (memberId != null) {
                 MemberDao memberDao = new MemberDao();

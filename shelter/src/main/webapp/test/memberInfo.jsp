@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -10,61 +12,54 @@
 </head>
 <body>
     <jsp:include page="testHeader.jsp" />
-    <% 
-        shelter.beans.member.MemberDto memberDto = (shelter.beans.member.MemberDto) request.getAttribute("memberDto");
 
-        if (memberDto != null) {
-    %>
-            <!-- Display Member ID if available -->
-            <p>Member ID: <%= memberDto.getMemberId() %></p>
-    <%
-            // Display other member information
-        } else {
-    %>
-            <p>Member information not available.</p>
-    <%
-        }
-    %>
-    <main>
-        <h2>Member Information</h2>
+    <h2>회원 정보</h2>
+    
+    <c:if test="${not empty memberDto}">
         <table border="1">
             <tr>
-                <td>ID</td>
-                <!-- Use ternary operator for null check and display "N/A" if memberDto is null -->
-                <td><%= (memberDto != null) ? memberDto.getMemberId() : "N/A" %></td>
+                <th>회원 ID</th>
+                <td>${memberDto.memberId}</td>
             </tr>
             <tr>
-                <td>Name</td>
-                <!-- Use ternary operator for null check and display "N/A" if memberDto is null -->
-                <td><%= (memberDto != null && memberDto.getMemberName() != null) ? memberDto.getMemberName() : "N/A" %></td>
+                <th>이름</th>
+                <td>${memberDto.memberName}</td>
             </tr>
             <tr>
-                <td>Nickname</td>
-                <!-- Use ternary operator for null check and display "N/A" if memberDto is null -->
-                <td><%= (memberDto != null && memberDto.getMemberNickname() != null) ? memberDto.getMemberNickname() : "N/A" %></td>
+                <th>닉네임</th>
+                <td>${memberDto.memberNickname}</td>
             </tr>
             <tr>
-                <td>Phone</td>
-                <!-- Use ternary operator for null check and display "N/A" if memberDto is null -->
-                <td><%= (memberDto != null && memberDto.getMemberPhone() != null) ? memberDto.getMemberPhone() : "N/A" %></td>
+                <th>전화번호</th>
+                <td>${memberDto.memberPhone}</td>
             </tr>
             <tr>
-                <td>Email</td>
-                <!-- Use ternary operator for null check and display "N/A" if memberDto is null -->
-                <td><%= (memberDto != null && memberDto.getMemberEmail() != null) ? memberDto.getMemberEmail() : "N/A" %></td>
+                <th>이메일</th>
+                <td>${memberDto.memberEmail}</td>
             </tr>
             <tr>
-                <td>Gender</td>
-                <!-- Use ternary operator for null check and display "N/A" if memberDto is null -->
-                <td><%= (memberDto != null && memberDto.getMemberGender() != null) ? memberDto.getMemberGender() : "N/A" %></td>
+                <th>성별</th>
+                <td>${memberDto.memberGender}</td>
             </tr>
             <tr>
-                <td>Address</td>
-                <!-- Use ternary operator for null check and display "N/A" if memberDto is null -->
-                <td><%= (memberDto != null && memberDto.getMemberAddress() != null) ? memberDto.getMemberAddress() : "N/A" %></td>
+                <th>주소</th>
+                <td>${memberDto.memberAddress}</td>
             </tr>
-            <!-- Add more rows for other member information -->
+            <tr>
+                <th>가입일</th>
+                <td>${memberDto.memberJoin}</td>
+            </tr>
+            <tr>
+                <th>등급</th>
+                <td>${memberDto.memberGrade}</td>
+            </tr>
         </table>
-    </main>
+    </c:if>
+
+    <c:if test="${empty memberDto}">
+        <p>회원 정보가 없습니다.</p>
+    </c:if>
+    
+    <a href="${pageContext.request.contextPath}/test/logout.do">로그아웃</a>
 </body>
 </html>
