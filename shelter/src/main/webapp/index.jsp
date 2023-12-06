@@ -67,7 +67,7 @@ pageEncoding="UTF-8"%>
         </li>
         <li><a href="#">유기동물 찾기</a></li>
         <li><a href="#">유기동물 보호</a></li>
-        <li><a href="#">유기동물 입양</a></li>
+        <li><a href="board/record.jsp">유기동물 입양</a></li>
         <li style="margin-bottom: 50px"><a href="#">자원봉사 모집</a></li>
       </ul>
       <p>
