@@ -9,43 +9,55 @@ public class ImageDto {
 	private String fileSave; // 저장된  경로
 	private Long fileSize;
 	private String fileType;
-	public int getimageId() {
+	
+	public int getImageId() {
 		return imageId;
 	}
-	public void setimageId(int imageId) {
+
+	public void setImageId(int imageId) {
 		this.imageId = imageId;
 	}
-	public int getboardId() {
+
+	public int getBoardId() {
 		return boardId;
 	}
-	public void setboardId(int boardId) {
+
+	public void setBoardId(int boardId) {
 		this.boardId = boardId;
 	}
+
 	public String getFileUpload() {
 		return fileUpload;
 	}
+
 	public void setFileUpload(String fileUpload) {
 		this.fileUpload = fileUpload;
 	}
+
 	public String getFileSave() {
 		return fileSave;
 	}
+
 	public void setFileSave(String fileSave) {
 		this.fileSave = fileSave;
 	}
+
 	public Long getFileSize() {
 		return fileSize;
 	}
+
 	public void setFileSize(Long fileSize) {
 		this.fileSize = fileSize;
 	}
+
 	public String getFileType() {
 		return fileType;
 	}
+
 	public void setFileType(String fileType) {
 		this.fileType = fileType;
 	}
-	
+
 	public ImageDto() {
 		super();
 	}

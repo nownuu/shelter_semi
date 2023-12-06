@@ -24,7 +24,7 @@ import shelter.beans.image.ImageDto;
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 maxFileSize = 1024 * 1024 * 10,      // 10MB
 maxRequestSize = 1024 * 1024 * 50)   // 50MB
-public class RecordBoard extends HttpServlet {
+public class RecordBoardServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
@@ -33,7 +33,13 @@ public class RecordBoard extends HttpServlet {
         try {
             req.setCharacterEncoding("UTF-8");
 
+         // 로그인 여부 확인
             String boardWriter = (String) req.getSession().getAttribute("uid");
+            if (boardWriter == null) {
+                // 로그인되지 않았으면 로그인 페이지로 이동
+                resp.sendRedirect(req.getContextPath() + "/test/login.jsp");
+                return;
+            }
 
             String boardTitle = req.getParameter("boardTitle");
             String boardContent = req.getParameter("boardContent");
@@ -72,8 +78,7 @@ public class RecordBoard extends HttpServlet {
                 imageDto.setFileUpload(new File(imagePath).getName());
                 imageDto.setFileSave(imagePath);
                 imageDto.setFileSize(new File(imagePath).length());
-                // MIME 타입을 얻을 수 있다면 설정
-                // imageDto.setFileType("image/jpeg");
+                // MIME 타입을 얻을 수 있다면 설정해야함... 이미지 깨지는 것 같음
                 imageDtos.add(imageDto);
             }
 
@@ -85,9 +90,9 @@ public class RecordBoard extends HttpServlet {
             // ImageDao를 사용하여 게시글과 이미지 정보 DB에 저장
             imageDao.uploadBoardWithImages(boardImageVo);
 
-            // 등록 성공 후 상세 정보를 보여주는 페이지
+         // 등록 성공 후 상세 정보를 보여주는 페이지
             int lastInsertedBoardId = new BoardDao().getLastInsertedBoardIdForUser(boardWriter);
-            resp.sendRedirect(req.getContextPath() + "/board/detail?id=" + lastInsertedBoardId);
+            resp.sendRedirect(req.getContextPath() + "/board/detail.do?bid=" + lastInsertedBoardId);
         } catch (Exception e) {
             e.printStackTrace();
         }
