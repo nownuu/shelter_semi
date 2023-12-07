@@ -106,7 +106,6 @@ public class BoardDao {
         } finally {
             JdbcUtil.close(this.conn, null, null);
         }
-
         return boardDto;
     }
 
@@ -138,7 +137,6 @@ public class BoardDao {
         } finally {
             JdbcUtil.close(this.conn, null, null);
         }
-
         return latestPosts;
     }
 
@@ -166,7 +164,6 @@ public class BoardDao {
         } finally {
             JdbcUtil.close(this.conn, null, null);
         }
-
         return lastInsertedId;
     }
 }
