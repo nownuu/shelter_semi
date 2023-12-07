@@ -3,6 +3,22 @@ package shelter.beans.board;
 import java.sql.Timestamp;
 import java.util.List;
 
+import shelter.beans.image.ImageDto;
+
+/*
+ * CREATE TABLE board (
+    board_id INT PRIMARY KEY AUTO_INCREMENT,
+    board_title VARCHAR(255) NOT NULL,
+    board_content TEXT NOT NULL,
+    board_writer VARCHAR(50) NOT NULL,
+    board_date TIMESTAMP NOT NULL,
+    board_location VARCHAR(255) NOT NULL,
+    first_category VARCHAR(50) NOT NULL CHECK (first_category IN ('강아지', '고양이', '기타동물')),
+    second_category VARCHAR(50) NOT NULL,
+    FOREIGN KEY (board_writer) REFERENCES member(member_id) ON DELETE CASCADE
+);
+ * */
+
 public class BoardDto {
 	private int boardId; 
     private String boardTitle; 
@@ -76,5 +92,14 @@ public class BoardDto {
 		this.imagePaths = imagePaths;
 	}
     
+	private List<ImageDto> imageDtos;
+
+    public List<ImageDto> getImageDtos() {
+        return imageDtos;
+    }
+
+    public void setImageDtos(List<ImageDto> imageDtos) {
+        this.imageDtos = imageDtos;
+    }
     
 }

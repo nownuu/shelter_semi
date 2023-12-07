@@ -2,6 +2,18 @@ package shelter.beans.image;
 
 import java.sql.Timestamp;
 
+/*
+ * CREATE TABLE image (
+    image_id INT PRIMARY KEY AUTO_INCREMENT,
+    board_id INT,
+    file_upload VARCHAR(255) ,
+    file_save VARCHAR(255) ,
+    file_size BIGINT ,
+    file_type VARCHAR(50) ,
+    FOREIGN KEY (board_id) REFERENCES board(board_id) ON DELETE CASCADE
+);
+ * */
+
 public class ImageDto {
 	private int imageId; 
 	private int boardId;

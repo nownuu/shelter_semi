@@ -33,7 +33,7 @@
             </c:forEach>
         </c:if>
 
-        <a href="<c:url value='/board/list.do'/>" class="btn btn-primary">목록으로 돌아가기</a>
+        <a href="<c:url value='/board/postsList.do'/>" class="btn btn-primary">목록으로 돌아가기</a>
     </div>
 
     <!-- 부트스트랩 JS 및 Popper.js, jQuery CDN 추가 -->
