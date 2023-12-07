@@ -60,7 +60,8 @@ public class BoardDao {
 
     // 게시물 수정
     public void updateBoard(BoardDto board) {
-        String sql = "UPDATE board SET board_title = ?, board_content = ?, board_writer = ?, board_location = ?, first_category = ?, second_category = ? WHERE board_id = ?";
+        String sql = "UPDATE board SET board_title = ?, board_content = ?, board_writer = ?, board_location = ?, first_category = ?, second_category = ? "
+        		+ "WHERE board_id = ?";
 
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, board.getBoardTitle());
@@ -79,11 +80,14 @@ public class BoardDao {
         }
     }
 
-    // 게시물 상세 정보 보기
+ // 게시물 상세 정보 보기
     public BoardDto getBoardDetail(int boardId) {
         BoardDto boardDto = null;
 
-        String sql = "SELECT * FROM board WHERE board_id = ?";
+        String sql = "SELECT b.*, m.member_nickname " +
+                     "FROM board b " +
+                     "JOIN member m ON b.board_writer = m.member_id " +
+                     "WHERE b.board_id = ?";
 
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, boardId);
@@ -94,7 +98,7 @@ public class BoardDao {
                     boardDto.setBoardId(rs.getInt("board_id"));
                     boardDto.setBoardTitle(rs.getString("board_title"));
                     boardDto.setBoardContent(rs.getString("board_content"));
-                    boardDto.setBoardWriter(rs.getString("board_writer"));
+                    boardDto.setBoardWriter(rs.getString("member_nickname")); // 닉네임으로 설정
                     boardDto.setBoardDate(rs.getTimestamp("board_date"));
                     boardDto.setBoardLocation(rs.getString("board_location"));
                     boardDto.setFirstCategory(rs.getString("first_category"));
@@ -109,10 +113,14 @@ public class BoardDao {
         return boardDto;
     }
 
-    // 게시물 목록 보기 - 최신글
+
+ // 게시물 목록 보기 - 최신글
     public List<BoardDto> getLatestPosts(int numberOfPosts) {
         List<BoardDto> latestPosts = new ArrayList<>();
-        String sql = "SELECT * FROM board ORDER BY board_date DESC LIMIT ?";
+        String sql = "SELECT b.*, m.member_nickname " +
+                     "FROM board b " +
+                     "JOIN member m ON b.board_writer = m.member_id " +
+                     "ORDER BY b.board_date DESC LIMIT ?";
 
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, numberOfPosts);
@@ -123,7 +131,7 @@ public class BoardDao {
                     board.setBoardId(rs.getInt("board_id"));
                     board.setBoardTitle(rs.getString("board_title"));
                     board.setBoardContent(rs.getString("board_content"));
-                    board.setBoardWriter(rs.getString("board_writer"));
+                    board.setBoardWriter(rs.getString("member_nickname")); // 닉네임으로 설정
                     board.setBoardDate(rs.getTimestamp("board_date"));
                     board.setBoardLocation(rs.getString("board_location"));
                     board.setFirstCategory(rs.getString("first_category"));
@@ -139,6 +147,7 @@ public class BoardDao {
         }
         return latestPosts;
     }
+
 
     // 마지막으로 삽입된 게시물의 ID - 게시물 등록 후에 보여지기 위한
     // 본인(회원)의 아이디를 기준으로 가장 최신이 보여지게 함
