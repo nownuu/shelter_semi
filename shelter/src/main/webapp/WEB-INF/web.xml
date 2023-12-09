@@ -20,4 +20,6 @@
   	<url-pattern>*.swf</url-pattern>
   	<url-pattern>*.gif</url-pattern>
   </servlet-mapping>
+
+  
 </web-app>
