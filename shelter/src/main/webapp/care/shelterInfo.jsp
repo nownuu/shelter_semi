@@ -1,35 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.google.gson.JsonArray" %>
-<%@ page import="com.google.gson.JsonObject" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>	보호소 정보</title>
+    <title>Shelter Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
 
-<%
-    // 서블릿에서 전달된 데이터를 가져옴
-    JsonArray items = (JsonArray) request.getAttribute("shelterItems");
-
-    // items가 null이 아닌 경우에만 처리
-    if (items != null) {
-        // items 배열을 순회하며 정보 표시
-        for (int i = 0; i < items.size(); i++) {
-            JsonObject item = items.get(i).getAsJsonObject();
-%>
-            <p>Care Reg No: <%= item.get("care_reg_no").getAsString() %></p>
-            <p>Care Name: <%= item.get("care_nm").getAsString() %></p>
-            <hr>
-<%
-        }
-    } else {
-        // items가 null일 경우 처리
-        out.println("<p>No data available</p>");
-    }
-%>
+<div class="container">
+    <h1>Shelter Information</h1>
+    
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Status</th>
+            <th>Service</th>
+            <th>Organization</th>
+            <th>Location</th>
+        </tr>
+        <c:forEach var="shelter" items="${shelterInfo}">
+            <tr>
+                <td>${shelter.id}</td>
+                <td>${shelter.status}</td>
+                <td>${shelter.service}</td>
+                <td>${shelter.organization}</td>
+                <td>${shelter.location}</td>
+            </tr>
+        </c:forEach>
+    </table>
+    
+</div>
 
 </body>
 </html>
