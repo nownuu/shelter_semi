@@ -20,7 +20,7 @@
     <% } else { %>
     <li><%= uid %>님, 환영합니다!</li>
     <li>
-      <a href="test/memberInfo.jsp"
+      <a href="test/memberInfo.do"
         ><img
           src="img/btn-login.png"
           alt="로그인/마이페이지"
