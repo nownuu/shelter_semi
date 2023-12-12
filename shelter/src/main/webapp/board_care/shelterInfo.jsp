@@ -71,7 +71,7 @@
                         int totalPages = jsonResponse.getJSONObject("response").getJSONObject("body").getInt("totalCount") / 20; // 페이지당 20개의 행을 가정
                         for (int i = 1; i <= totalPages; i++) {
                     %>
-                            <a href="/your-servlet-context-path/board_care/shelterInfo.do?page=<%= i %>"><%= i %></a>
+                            <a href="/shelter/board_care/shelterInfo.do?page=<%= i %>"><%= i %></a>
                     <%
                         }
                     %>
