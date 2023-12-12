@@ -56,11 +56,21 @@
                                    <td><%= item.optString("orgNm", "") %></td>
                                    <td><%= item.optString("divisionNm", "") %></td>
                                    <td><%= item.optString("saveTrgtAnimal", "") %></td>
-
                                </tr>
                         <% } %>
                     </tbody>
                 </table>
+                <div style="text-align: center;">
+                    <% 
+                        // 페이지 링크 추가
+                        int totalPages = jsonResponse.getJSONObject("response").getJSONObject("body").getInt("totalCount") / 20; // 페이지당 20개의 행을 가정
+                        for (int i = 1; i <= totalPages; i++) {
+                    %>
+                            <a href="/shelter/board_care/shelterInfo.do?page=<%= i %>"><%= i %></a>
+                    <%
+                        }
+                    %>
+                </div>
     <%
             } else {
     %>
