@@ -17,7 +17,8 @@ public class ShelterInfoServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        try {
+    	// TODO Auto-generated method stub
+    	try {
             String pageParam = request.getParameter("page");
             int page = (pageParam != null) ? Integer.parseInt(pageParam) : 1;
 
