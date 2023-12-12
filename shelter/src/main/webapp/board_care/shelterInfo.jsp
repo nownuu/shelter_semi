@@ -1,7 +1,7 @@
 <%@page import="org.json.JSONArray"%>
-<%@page import="org.json.JSONObject"%>
+<%@page import="java.net.URLEncoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page import="org.json.JSONObject"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +30,7 @@
     <% 
         String apiResponse = (String) request.getAttribute("apiResponse");
         if (apiResponse != null) {
-            // JSON 파싱 및 "item" 어레이 얻기
+            // JSON 파싱
             JSONObject jsonResponse = new JSONObject(apiResponse);
             JSONObject items = jsonResponse.getJSONObject("response").getJSONObject("body").getJSONObject("items");
             JSONArray itemArray = items.getJSONArray("item");
@@ -44,23 +44,19 @@
                             <th>관리기관명</th>
                             <th>동물보호센터유형</th>
                             <th>구조대상동물</th>
-                            <th>소재지도로명주소</th>
-                            <th>소재지번주소</th>
-                            <!-- 필요한 만큼의 헤더 추가 -->
                         </tr>
                     </thead>
                     <tbody>
                         <% for (int i = 0; i < itemArray.length(); i++) {
                                JSONObject item = itemArray.getJSONObject(i);
                         %>
-                               <tr>
+                        <%-- carNm 클릭시에 상세페이지(shelterDetail.jsp)로 이동 --%>
+                               <tr onclick="location.href='/shelter/board_care/shelterDetail.do?careNm=<%= URLEncoder.encode(item.optString("careNm", ""), "UTF-8") %>'">
                                    <td><%= item.optString("careNm", "") %></td>
                                    <td><%= item.optString("orgNm", "") %></td>
                                    <td><%= item.optString("divisionNm", "") %></td>
                                    <td><%= item.optString("saveTrgtAnimal", "") %></td>
-                                   <td><%= item.optString("careAddr", "") %></td>
-                                   <td><%= item.optString("jibunAddr", "") %></td>
-                                   <!-- 필요한 만큼의 셀 추가 -->
+
                                </tr>
                         <% } %>
                     </tbody>
