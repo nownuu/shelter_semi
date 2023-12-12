@@ -27,6 +27,11 @@
 <body>
     <h1>동물 보호소 정보</h1>
 
+    <form action="/shelter/board_care/shelterDetail.do" method="get">
+        검색: <input type="text" name="careNm" value="">
+        <input type="submit" value="검색">
+    </form>
+
     <% 
         String apiResponse = (String) request.getAttribute("apiResponse");
         if (apiResponse != null) {
@@ -66,7 +71,7 @@
                         int totalPages = jsonResponse.getJSONObject("response").getJSONObject("body").getInt("totalCount") / 20; // 페이지당 20개의 행을 가정
                         for (int i = 1; i <= totalPages; i++) {
                     %>
-                            <a href="/shelter/board_care/shelterInfo.do?page=<%= i %>"><%= i %></a>
+                            <a href="/your-servlet-context-path/board_care/shelterInfo.do?page=<%= i %>"><%= i %></a>
                     <%
                         }
                     %>
