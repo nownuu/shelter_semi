@@ -211,5 +211,20 @@ public class MemberDao {
         }
     }
 
+    // 임시 비밀번호 이메일 발송 후 난수가 임시 비밀번호로 변경 코드
+    public void updatePassword(String memberId, String newPassword) {
+        String sql = "UPDATE member SET member_pw=? WHERE member_id=?";
+        
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, newPassword);
+            ps.setString(2, memberId);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            JdbcUtil.close(this.conn, null, null);
+        }
+    }
+
     
 }
