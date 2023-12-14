@@ -89,6 +89,10 @@ public class MemberFindPwServlet extends HttpServlet {
 
         // 메일 전송
         Transport.send(message);
+        
+        // 데이터베이스에 새로운 비밀번호 업데이트
+        MemberDao memberDao = new MemberDao();
+        memberDao.updatePassword(memberId, password);
     }
 
     // 임시 비밀번호 발급
