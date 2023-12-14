@@ -22,7 +22,8 @@
 
         <label for="memberPhone">전화번호</label>
         <input type="text" id="memberPhone" name="memberPhone" required><br>
-        <div id="phoneError"></div> <!-- Add this line for displaying phone error -->
+        <div id="phoneError"></div> <!-- 전화번호 부분 지워야할듯. -->
+        
 
         <button type="submit" disabled>비밀번호 찾기</button>
     </form>

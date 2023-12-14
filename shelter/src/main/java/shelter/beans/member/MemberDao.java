@@ -107,14 +107,14 @@ public class MemberDao {
     }
 
     // 비밀번호 찾기 - 임시 비밀번호를 이메일로 줄 예정
-    public String findPw(String memberId, String memberName, String memberEmail) {
-    	String sql = "SELECT member_pw FROM member WHERE member_id=? AND member_name=? AND member_email=?";
+    public String findPw(String memberId, String memberName, String memberPhone) {
+    	String sql = "SELECT member_pw FROM member WHERE member_id=? AND member_name=? AND member_phone=?";
     	
     	try(PreparedStatement ps = conn.prepareStatement(sql)){
     		
     		ps.setString(1, memberId);
     		ps.setString(2, memberName);
-            ps.setString(3, memberEmail);
+            ps.setString(3, memberPhone);
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {

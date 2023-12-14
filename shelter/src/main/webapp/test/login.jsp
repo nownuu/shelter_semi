@@ -26,6 +26,11 @@
     null) { %>
     <p style="color: red"><%= error %></p>
     <% } %>
+    
+    <div style="margin-top: 20px;">
+		  <a href="findId.jsp">아이디 찾기</a>
+		  <a href="findPw.jsp">비밀번호 찾기</a>
+</div>
     <p style="margin-top: 20px;">회원이 아니십니까? <a href="join.jsp" style="text-decoration: underline;">회원가입 하기</a></p>
 
     <script>
