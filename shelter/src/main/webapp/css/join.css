@@ -1,61 +1,60 @@
 @import url(reset.css);
 
 html {
-    font-family: "Noto Serif KR", serif;
-    background: #eeeae2;
-    color: #333;
-    outline: #333;
+  font-family: "Noto Serif KR", serif;
+  background: #eeeae2;
+  color: #333;
+  outline: #333;
+}
+main {
+  max-width: 1400px; /* Set a maximum width for better responsiveness */
+  margin: 20px auto;
+  text-align: center;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
-body {
-    width: 600px;
-    margin: 20px auto;
-    text-align: center;
-}
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 h2 {
-    margin: 30px 0;
-    font-size: 32px;
-    font-weight: 900;
+  margin: 30px 0;
+  font-size: 32px;
+  font-weight: 900;
 }
 
 form {
-    margin: 0 auto;
-    width: 300px;
-    box-sizing: border-box;
+  width: 100%; /* Make the form take the full width of its container */
+  box-sizing: border-box;
 }
 form label {
-    display: block;
-    text-align: left;
-    margin-bottom: 5px;
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
 }
-form input, select {
-    display: block;
-    width: 100%;
-    padding: 10px 5px;
-    border: 0;
-    border-radius: 5px;
-    box-sizing: border-box;
+form input,
+select {
+  display: block;
+  width: 100%;
+  padding: 10px 5px;
+  border: 0;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
 button {
-    display: block;
-    width: 100%;
-    padding: 5px 15px;
-    font-size: 24px;
-    font-family: inherit;
-    border-radius: 30px;
-    background-color: transparent;
-    transition: 1s;
-    color: #333;
-
-  }
-  button.active {
-    background-color: #4f6c98;
-    color: #fff;
-  }
-  
+  display: block;
+  width: 100%;
+  padding: 5px 15px;
+  font-size: 24px;
+  font-family: inherit;
+  border-radius: 30px;
+  background-color: transparent;
+  transition: 1s;
+  color: #333;
+}
+button.active {
+  background-color: #4f6c98;
+  color: #fff;
+}

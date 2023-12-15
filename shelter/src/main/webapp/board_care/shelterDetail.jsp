@@ -3,13 +3,40 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/table.css" />
     <title>동물 보호소 상세 정보</title>
     <style>
     </style>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=432095999a186049d9c443e98e4a8e69"></script>
+     <style>
+      h2 {
+        margin: 0 auto;
+        text-align: center;
+        font-size: 36px;
+      }
+      #map {
+        margin: 0 auto;
+        border-radius: 15px;
+        margin-bottom: 20px;
+      }
+      table {
+        width: 80%;
+      }
+      .content span {
+        display: inline-block;
+        width: 50px;
+        padding: 3px;
+        border-radius: 5px;
+        margin-right: 3px;
+        font-size: 13px;
+      }
+    </style>
 </head>
 <body>
-    <h1>동물 보호소 상세 정보</h1>
+<jsp:include page="../header.jsp" />
+<main>
+    <h2>동물 보호소 상세 정보</h2>
 
     <%
         JSONObject shelterInfo = (JSONObject) request.getAttribute("shelterInfo");
@@ -87,5 +114,6 @@
     %>
             <p>상세 정보를 가져오는 중에 오류가 발생했습니다</p>
     <% } %>
+    </main>
 </body>
 </html>

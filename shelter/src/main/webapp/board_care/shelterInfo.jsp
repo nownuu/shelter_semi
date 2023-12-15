@@ -3,32 +3,75 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="org.json.JSONObject"%>
 <!DOCTYPE html>
-<html>
-<head>
-    <title>동물 보호소 정보</title>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/table.css" />
+    <title>사지마세요, 입양하세요. - 동물 보호소 정보</title>
     <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
+      h2 {
+        margin: 0 auto;
+        text-align: center;
+        font-size: 36px;
+      }
+      .search {
+        float: right;
+        margin-bottom: 15px;
+      }
+      .search input {
+        font-family: "Noto Serif KR", serif;
+        font-size: 18px;
+      }
+      table th,
+      td,
+      table {
+        border: 0;
+      }
+      tbody {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        background: #eeeae2;
+      }
+      tr {
+        background: #fff;
+        border-radius: 15px;
+        display: flex;
+        flex-flow: column;
+        padding: 10px 0;
+        width: 19%;
+        height: 150px;
+        cursor: pointer;
+        box-sizing: border-box;
+        margin-bottom: 15px;
+      }
+      td:nth-of-type(1) {
+        font-weight: 800;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      .content span {
+        display: inline-block;
+        border: 1px solid blue;
+        width: 50px;
+        padding: 3px;
+        border-radius: 5px;
+        margin-right: 3px;
+        font-size: 13px;
+      }
+      a.active {
+        text-decoration: underline;
+      }
     </style>
-</head>
 <body>
-    <h1>동물 보호소 정보</h1>
+<jsp:include page="/header.jsp" />
+<main>
+    <h2>동물 보호소 정보</h2>
 
-    <form action="/shelter/board_care/shelterDetail.do" method="get">
-        검색: <input type="text" name="careNm" value="">
+    <form class="search" action="/shelter/board_care/shelterDetail.do" method="get">
+        <input type="text" name="careNm" value="">
         <input type="submit" value="검색">
     </form>
 
@@ -42,15 +85,8 @@
 
             if (itemArray != null) {
     %>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>동물보호센터명</th>
-                            <th>관리기관명</th>
-                            <th>동물보호센터유형</th>
-                            <th>구조대상동물</th>
-                        </tr>
-                    </thead>
+                <table class="content">
+                      
                     <tbody>
                         <% for (int i = 0; i < itemArray.length(); i++) {
                                JSONObject item = itemArray.getJSONObject(i);
@@ -86,5 +122,4 @@
     %>
             <p>데이터를 가져오는 중에 오류가 발생했습니다</p>
     <% } %>
-</body>
-</html>
+    </main>

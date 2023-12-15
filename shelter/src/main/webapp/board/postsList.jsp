@@ -6,9 +6,48 @@
     <meta charset="UTF-8">
     <title>최신글목록</title>
     <!-- 부트스트랩 CDN 추가 -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/table.css" />
+    	 <link rel="stylesheet" href="../css/index.css" />
+    <style>
+.container {
+	margin: 0 auto;
+	width: 1400px;
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+}
+h2 {
+	text-align: center;
+	font-size: 48px;
+	font-weight: 800;
+}
+.row {
+	 margin: 15px auto;
+    width: 100%; /* Make sure the row takes the full width of the container */
+    display: flex;
+   justify-content: space-between;
+    
+}
+
+.col-md-4 {
+   background: #fff;
+    flex: 0 0 30%; /* Set the width of each column to 30% of the container */
+    margin: 10px; /* Add margin between columns */
+}
+
+.card {
+    width: 100%;
+}
+button {
+	margin: 0 auto;
+	text-align: center;
+	font-size: 21px;
+}
+/* Add more styles as needed for card, card-body, etc. */
+
+    </style>
 </head>
 <body>
+<jsp:include page="../header.jsp"/>
     <div class="container">
         <h2>최신글 목록</h2>
         
@@ -22,11 +61,13 @@
                             <p class="card-text">작성자: ${board.boardWriter}</p>
                             <p class="card-text">날짜: ${board.boardDate}</p>
                             <a href="<c:url value='/board/detail.do?bid=${board.boardId}' />" class="btn btn-primary">자세히 보기</a>
+                            
                         </div>
                     </div>
                 </div>
             </c:forEach>
-        </div>
+        </div><a href="/shelter/board/record.jsp">
+        <button>글쓰기</button></a>
     </div>
 
     <!-- 부트스트랩 JS 및 Popper.js, jQuery CDN 추가 -->

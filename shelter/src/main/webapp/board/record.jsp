@@ -5,10 +5,32 @@
 <head>
     <meta charset="UTF-8">
     <title>게시글 등록</title>
-    <!-- 부트스트랩 CDN 추가 -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+          <link rel="stylesheet" href="../css/join.css" />
+      <link rel="stylesheet" href="../css/index.css" />
+
+           <style>
+      h2 {
+        margin: 0 auto;
+        text-align: center;
+        font-size: 36px;
+      }   body {
+        width: 100%;
+      }
+      input {
+        margin-bottom: 32px;
+      }
+main {
+	margin: 0 auto;
+}
+form {width: 100%}
+#boardContent {
+width: 100%; margin-botton: 32px}
+    </style>
 </head>
 <body>
+<jsp:include page="../header.jsp"/>
+<main>
     <div class="container">
         <h2>게시글 등록</h2>
         
@@ -41,7 +63,9 @@
         </form>
     </div>
 
-    <!-- 부트스트랩 JS 및 Popper.js, jQuery CDN 추가 -->
+</main>
+
+    <!— 부트스트랩 JS 및 Popper.js, jQuery CDN 추가 —>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

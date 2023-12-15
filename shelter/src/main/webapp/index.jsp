@@ -24,7 +24,7 @@ pageEncoding="UTF-8"%>
             구성한다. 모든 국민은 법률이 정하는 바에 의하여 국가기관에 문서로
             청원할 권리를 가진다.
           </p>
-          <button>실종동물 찾기</button>
+         <a href="board/postsList.jsp"> <button>실종동물 찾기</button></a>
         </div>
         <img src="img/find-dog.jpg" alt="실종동물 찾기" />
       </article>
@@ -37,7 +37,7 @@ pageEncoding="UTF-8"%>
             구성한다. 모든 국민은 법률이 정하는 바에 의하여 국가기관에 문서로
             청원할 권리를 가진다.
           </p>
-          <button style="float: left">유기동물 보호</button>
+         <a href="board_care/shelterInfo.do?"> <button style="float: left">유기동물 보호</button></a>
         </div>
       </article>
       <article id="find-area" class="main-cont">
@@ -49,7 +49,7 @@ pageEncoding="UTF-8"%>
             aspernatur ullam aliquam illo amet reprehenderit vitae obcaecati
             pariatur harum maiores itaque nisi assumenda!
           </p>
-          <button>유기동물 입양</button>
+           <a href="board_care/shelterInfo.jsp"><button>유기동물 입양</button></a>
         </div>
         <img src="img/adout-dog.jpg" alt="유기동물 입양" />
       </article>
@@ -65,9 +65,9 @@ pageEncoding="UTF-8"%>
         <li>
           <a href="#"><img src="img/Logo.png" alt="로고" /></a>
         </li>
-        <li><a href="#">유기동물 찾기</a></li>
-        <li><a href="#">유기동물 보호</a></li>
-        <li><a href="board/record.jsp">유기동물 입양</a></li>
+        <li><a href="board/record.jsp">실종동물 찾기</a></li>
+        <li><a href="board_care/shelterInfo.do?pageNo=1">유기동물 보호</a></li>
+        <li><a href="#">유기동물 입양</a></li>
         <li style="margin-bottom: 50px"><a href="#">자원봉사 모집</a></li>
       </ul>
       <p>
